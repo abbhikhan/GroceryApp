@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:grocery/Catagories.dart';
-import 'package:grocery/SignUp.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:grocery/Home.dart';
+import 'package:grocery/SearchItems.dart';
 import 'package:grocery/constants.dart';
-import 'package:grocery/core/home_provider.dart';
+import 'package:grocery/profile.dart';
 
 import 'core/SearchProvider.dart';
 
@@ -16,8 +17,6 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  String? _searchQuery;
-  List<String> _searchResults = [];
   int _selectedIndex = 0;
   bool? favoriteicon = false;
   SearchProvider? searchProvider = SearchProvider();
@@ -30,8 +29,6 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     String Value;
-    List<String> _searchResults = [];
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -58,31 +55,20 @@ class _SearchState extends State<Search> {
           // ignore: prefer_const_literals_to_create_immutables
           children: <Widget>[
             TextField(
-              // textAlign: TextAlign.center,
               obscureText: false,
-              onChanged: (query) {
-                setState(() {
-                  _searchQuery = query;
-                });
-              },
-
               decoration: kTextFieldDecoration.copyWith(
                 hintText: 'Serach Keywords..',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SearchItem()));
+                  },
+                  child: Icon(Icons.search),
+                ),
               ),
             ),
-            // Expanded(
-            //   child: ListView.builder(
-            //     itemCount: _searchResults?.length ?? 0,
-            //     itemBuilder: (context, index) {
-            //       return ListTile(
-            //         title: Text(_searchResults![index]),
-            //       );
-            //     },
-            //   ),
-            // ),
             SizedBox(
-              height: 45,
+              height: 45.h,
             ),
             Expanded(
               child: GridView.builder(
@@ -94,7 +80,7 @@ class _SearchState extends State<Search> {
                   crossAxisSpacing: 10,
                 ),
                 itemBuilder: ((context, index) => Container(
-                      height: 500,
+                      height: 500.h,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(
@@ -132,50 +118,51 @@ class _SearchState extends State<Search> {
                                 "${searchProvider?.data[index].image}",
                               ),
                               SizedBox(
-                                height: 4,
+                                height: 4.h,
                               ),
                               Text(
                                 "${searchProvider?.data[index].name}",
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 20.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
                               ),
                               SizedBox(
-                                height: 14,
+                                height: 14.h,
                               ),
                               Text(
                                 "${searchProvider?.data[index].price}",
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 20.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xff6CC51D),
                                 ),
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 10.h,
                               ),
                               Text(
                                 "${searchProvider?.data[index].weight}",
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 13.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xff868889),
                                 ),
                               ),
-                              SizedBox(height: 8),
+                              SizedBox(height: 8.h),
                             ],
                           ),
                         ),
                         footer: GridTileBar(
                           leading: Text('                        '),
                           trailing: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.add,
-                                color: Color(0xff6CC51D),
-                              )),
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.add,
+                              color: Color(0xff6CC51D),
+                            ),
+                          ),
                         ),
                       ),
                     )),
@@ -185,9 +172,14 @@ class _SearchState extends State<Search> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  },
+                  child: Icon(Icons.home)),
               label: 'Home',
               backgroundColor: knavcolor),
           BottomNavigationBarItem(
@@ -205,7 +197,12 @@ class _SearchState extends State<Search> {
             backgroundColor: knavcolor,
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin),
+              icon: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Profile()));
+                  },
+                  child: Icon(Icons.person_pin)),
               label: 'Profile',
               backgroundColor: knavcolor),
         ],

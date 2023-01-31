@@ -1,15 +1,24 @@
 import 'package:flutter/widgets.dart';
 
-class SearchModel {
+class CartModel {
   String? image;
   String? name;
   String? price;
   String? weight;
+  String? id;
+  int itemCount=0;
 
-  SearchModel({
+  
+
+  
+  
+
+  CartModel({
+    required this.id,
     required this.image,
     required this.name,
     required this.price,
     required this.weight,
+    // this.itemCount,
   });
 }

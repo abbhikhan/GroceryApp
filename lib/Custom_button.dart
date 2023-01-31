@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   String text;
@@ -20,7 +21,7 @@ class CustomButton extends StatelessWidget {
       child: InkWell(
         onTap: onpressed,
         child: Container(
-            height: 50,
+            height: 50.h,
             width: double.infinity,
             decoration: BoxDecoration(
               color: buttonColour,
@@ -33,7 +34,7 @@ class CustomButton extends StatelessWidget {
                 child: Text(
                   text,
                   style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 22.sp,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),

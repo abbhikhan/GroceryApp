@@ -3,11 +3,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery/Custom_button.dart';
-import 'package:grocery/SignUp.dart';
+import 'package:grocery/Home.dart';
+import 'package:grocery/Search.dart';
+import 'package:grocery/Signup/SignUp.dart';
 import 'package:grocery/constants.dart';
 import 'package:grocery/core/home_provider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:grocery/myCart.dart';
+import 'package:grocery/profile.dart';
 
 class Fruits extends StatefulWidget {
   const Fruits({super.key});
@@ -61,204 +66,185 @@ class _FruitsState extends State<Fruits> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          // ignore: prefer_const_literals_to_create_immutables
-          children: <Widget>[
-            Center(
-              child: Image.asset(
-                'assets/images/aple.png',
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            // ignore: prefer_const_literals_to_create_immutables
+            children: <Widget>[
+              Center(
+                child: Image.asset(
+                  'assets/images/aple.png',
+                ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Apple',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          weight--;
-                        });
-                      },
-                      child: CircleAvatar(
-                        backgroundColor: Color(0xffAEDC81),
-                        radius: max(14, 14),
-                        child: Icon(
-                          Icons.remove,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(weight.toString()),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      'Kg',
-                      style: TextStyle(fontSize: 14),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        setState(() {
-                          weight++;
-                        });
-                      },
-                      child: CircleAvatar(
-                        backgroundColor: Color(0xffAEDC81),
-                        radius: max(14, 14),
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Text(
-              'Fruits',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-            ),
-            Row(
-              children: [
-                Text(
-                  '4.5',
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                RatingBar.builder(
-                  initialRating: 3,
-                  minRating: 1,
-                  direction: Axis.horizontal,
-                  allowHalfRating: true,
-                  itemCount: 5,
-                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                  itemBuilder: (context, _) => Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
-                  onRatingUpdate: (rating) {
-                    print(rating);
-                  },
-                ),
-                Text(
-                  '(90 reviews)',
-                  style: TextStyle(
-                    color: Color(0xff868889),
-                  ),
-                ),
-              ],
-            ),
-            Text(
-              '180RS',
-              style: TextStyle(color: KTextColor, fontSize: 15),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Descriptions',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Apple Mountain works as a seller for many apple growers of apple. apple are easy to spot in your produce aisle. They are just like regular apple, but they will usually have a few more scars on  ReadMore',
-              style: TextStyle(
-                color: Color(0xffD1D2D3),
-                fontSize: 16,
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(
-                            15,
+                  Text(
+                    'Apple',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            weight--;
+                          });
+                        },
+                        child: CircleAvatar(
+                          backgroundColor: Color(0xffAEDC81),
+                          radius: max(14, 14),
+                          child: Icon(
+                            Icons.remove,
+                            color: Colors.white,
                           ),
-                          // ignore: prefer_const_literals_to_create_immutables
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0xffEBEBEB),
-                              offset: Offset(1, 0),
-                              spreadRadius: 1,
-                            ),
-                            BoxShadow(
-                              color: Color(0xffEBEBEB),
-                              offset: Offset(0, 1),
-                              spreadRadius: 1,
-                            ),
-                          ]),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.shopping_cart,
-                              color: Color(0xff82CD47),
-                            ),
-                            Text(
-                              'Add to cart',
-                              style: TextStyle(
-                                color: Color(0xff82CD47),
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
-                    ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      Text(weight.toString()),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Text(
+                        'Kg',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            weight++;
+                          });
+                        },
+                        child: CircleAvatar(
+                          backgroundColor: Color(0xffAEDC81),
+                          radius: max(14, 14),
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 8.h,
+              ),
+              Text(
+                'Fruits',
+                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
+              ),
+              Row(
+                children: [
+                  Text(
+                    '4.5',
+                    style:
+                        TextStyle(fontSize: 17.sp, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    width: 35,
+                    height: 10.h,
                   ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(left: 20),
-                      decoration: BoxDecoration(
-                        color: KTextColor,
-                        borderRadius: BorderRadius.circular(
-                          15,
-                        ),
-                      ),
-                      child: Center(
+                  RatingBar.builder(
+                    initialRating: 1,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                    itemBuilder: (context, _) => Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                    onRatingUpdate: (rating) {
+                      print(rating);
+                    },
+                  ),
+                  Text(
+                    '(90 reviews)',
+                    style: TextStyle(
+                      color: Color(0xff868889),
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                '180RS',
+                style: TextStyle(color: KTextColor, fontSize: 15),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Text(
+                'Descriptions',
+                style: TextStyle(
+                  fontSize: 25.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                'Apple Mountain works as a seller for many apple growers of apple. apple are easy to spot in your produce aisle. They are just like regular apple, but they will usually have a few more scars on  ReadMore',
+                style: TextStyle(
+                  color: Color(0xffD1D2D3),
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(
+                height: 15.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                              15,
+                            ),
+                            // ignore: prefer_const_literals_to_create_immutables
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xffEBEBEB),
+                                offset: Offset(1, 0),
+                                spreadRadius: 1,
+                              ),
+                              BoxShadow(
+                                color: Color(0xffEBEBEB),
+                                offset: Offset(0, 1),
+                                spreadRadius: 1,
+                              ),
+                            ]),
                         child: TextButton(
                           onPressed: () {},
                           child: Row(
                             children: [
-                              Text(
-                                'Buy Now',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
+                              Icon(
+                                Icons.shopping_cart,
+                                color: Color(0xff82CD47),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => MyCart()));
+                                },
+                                child: Text(
+                                  'Add to cart',
+                                  style: TextStyle(
+                                    color: Color(0xff82CD47),
+                                    fontSize: 17.sp,
+                                  ),
                                 ),
                               ),
                             ],
@@ -266,17 +252,52 @@ class _FruitsState extends State<Fruits> {
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                    SizedBox(
+                      width: 35.w,
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(left: 20),
+                        decoration: BoxDecoration(
+                          color: KTextColor,
+                          borderRadius: BorderRadius.circular(
+                            15,
+                          ),
+                        ),
+                        child: Center(
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Buy Now',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  },
+                  child: Icon(Icons.home)),
               label: 'Home',
               backgroundColor: knavcolor),
           BottomNavigationBarItem(
@@ -294,7 +315,13 @@ class _FruitsState extends State<Fruits> {
             backgroundColor: knavcolor,
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin),
+              icon: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                },
+                child: Icon(Icons.person_pin),
+              ),
               label: 'Profile',
               backgroundColor: knavcolor),
         ],

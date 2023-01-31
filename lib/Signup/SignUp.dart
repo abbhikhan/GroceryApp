@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, duplicate_ignore, use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery/Custom_button.dart';
+import 'package:grocery/Signin/SignIn.dart';
 import 'package:grocery/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,11 +45,11 @@ class Signup extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: textfield(
-                    name: 'Sign in',
+                    name: 'Sign Up',
                   ),
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 25.h,
                 ),
                 text(
                   name: 'Name',
@@ -77,7 +79,7 @@ class Signup extends StatelessWidget {
                 Text(
                   'Password',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontFamily: 'mulish',
                   ),
                 ),
@@ -95,7 +97,7 @@ class Signup extends StatelessWidget {
                 Text(
                   'Confirm password',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontFamily: 'mulish',
                   ),
                 ),
@@ -111,14 +113,14 @@ class Signup extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 CustomButton(
                   text: 'Sign Up',
                   buttonColour: Color(0xff82CD47),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -126,20 +128,23 @@ class Signup extends StatelessWidget {
                     Text(
                       'Already have an account?',
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         // fontFamily: 'mulish',
                         color: Color(0xff868889),
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Login()));
+                      },
                       style: TextButton.styleFrom(
                         foregroundColor: Color(0xff9BD76C),
                         disabledForegroundColor: Colors.grey, // Disable color
                       ),
                       child: Text(
                         'Sign In',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20.sp),
                       ),
                     )
                   ],
@@ -163,7 +168,7 @@ class text extends StatelessWidget {
       'Name',
       textAlign: TextAlign.start,
       style: TextStyle(
-        fontSize: 20,
+        fontSize: 20.sp,
         fontFamily: 'mulish',
       ),
     );
@@ -181,7 +186,7 @@ class textfield extends StatelessWidget {
       style: TextStyle(
         color: Color(0xff82CD47),
         fontWeight: FontWeight.w600,
-        fontSize: 24,
+        fontSize: 24.sp,
       ),
     );
   }

@@ -5,18 +5,22 @@ import 'package:flutter/material.dart';
 class Catagories extends StatelessWidget {
   String? name;
   String? image;
+  VoidCallback? onPressed;
 
-  Catagories({required this.name, required this.image});
+  Catagories({this.onPressed, required this.name, required this.image});
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
-      child: Column(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          Image.asset('$image'),
-          Text('$name'),
-        ],
+    return InkWell(
+      onTap: onPressed,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
+        child: Column(
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            Image.asset('$image'),
+            Text('$name'),
+          ],
+        ),
       ),
     );
   }

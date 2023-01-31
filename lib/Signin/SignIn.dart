@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, duplicate_ignore, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:grocery/Custom_button.dart';
-import 'package:grocery/SignUp.dart';
+import 'package:grocery/Home.dart';
+import 'package:grocery/Signup/SignUp.dart';
 import 'package:grocery/constants.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -48,18 +50,18 @@ class Login extends StatelessWidget {
                     style: TextStyle(
                       color: KTextColor,
                       fontWeight: FontWeight.w600,
-                      fontSize: 24,
+                      fontSize: 24.sp,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 25.h,
                 ),
                 Text(
                   'Name',
                   textAlign: TextAlign.start,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontFamily: 'mulish',
                   ),
                 ),
@@ -74,12 +76,12 @@ class Login extends StatelessWidget {
                       ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 15.h,
                 ),
                 Text(
                   'Password',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontFamily: 'mulish',
                   ),
                 ),
@@ -106,32 +108,32 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 15.h,
                 ),
                 CustomButton(
                   onpressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Signup()));
+                        MaterialPageRoute(builder: (context) => Home()));
                   },
                   text: 'Sign in',
                   buttonColour: KTextColor,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image(
                         // color: Colors.white,
-                        height: 30,
+                        height: 30.h,
                         image: AssetImage(
                           'assets/images/gogle.png',
                         )),
                     Text(
                       'Login with Google',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontFamily: 'mulish',
                         color: Color(0xff1A1A1A),
                       ),
@@ -139,7 +141,7 @@ class Login extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -147,22 +149,25 @@ class Login extends StatelessWidget {
                     Text(
                       'Dont you have an account?',
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 15.sp,
                         // fontFamily: 'mulish',
                         color: Color(0xff868889),
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Signup()));
+                      },
                       style: TextButton.styleFrom(
                         foregroundColor: KTextColor,
                         disabledForegroundColor: Colors.grey, // Disable color
                       ),
                       child: Text(
                         'Sign up',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20.sp),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ],
